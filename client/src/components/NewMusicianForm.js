@@ -8,7 +8,7 @@ const NewMusicianForm = props => {
   const [newMusician, setNewMusician] = useState({
     name: "",
     vibe: "",
-    releasedEPs: ""
+    releasedEPs: "5"
   })
   const [errors, setErrors] = useState([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
@@ -84,13 +84,20 @@ const NewMusicianForm = props => {
         </label>
 
         <label>
-          Number of Weird EPs:
+          Number of Weird EPs: <output for="price" textContent={newMusician.releasedEPs}>{newMusician.releasedEPs}</output>
+          <br></br>
+
           <input
-            type="text"
+            type="range"
             name="releasedEPs"
+            min="0"
+            max="15"
+            step="1"
             onChange={handleInputChange}
             value={newMusician.releasedEPs}
           />
+
+
         </label>
 
         <div className="button-group">
