@@ -1,5 +1,5 @@
 ## Todo
-* reskin for musicians, commit/branch for SC review reference
+* DONE reskin for musicians, commit/branch for SC review reference
 * evaluate instructions for minor differences to make, commit
 * generate finished code for codebase => branch commit 
 * remove code for new base

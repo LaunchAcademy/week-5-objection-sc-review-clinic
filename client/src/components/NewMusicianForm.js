@@ -6,8 +6,8 @@ import translateServerErrors from "../services/translateServerErrors"
 
 const NewMusicianForm = props => {
   const [newMusician, setNewMusician] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
+    vibe: "",
     releasedEPs: ""
   })
   const [errors, setErrors] = useState([])
@@ -67,9 +67,9 @@ const NewMusicianForm = props => {
          First Name:
           <input
             type="text"
-            name="firstName"
+            name="name"
             onChange={handleInputChange}
-            value={newMusician.firstName}
+            value={newMusician.name}
           />
         </label>
 
@@ -77,9 +77,9 @@ const NewMusicianForm = props => {
           Last Name:
           <input
             type="text"
-            name="lastName"
+            name="vibe"
             onChange={handleInputChange}
-            value={newMusician.lastName}
+            value={newMusician.vibe}
           />
         </label>
 

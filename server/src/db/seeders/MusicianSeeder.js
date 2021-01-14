@@ -4,18 +4,19 @@ class MusicianSeeder {
   static async seed() {
     const MusiciansData = [
       {
-        title: "50th Birthday",
-        location: "Italy",
-        length: 9
+        name: "Dodie",
+        vibe: "Depressed British poet that you are constantly rooting for",
+        releasedEPs: 8
       },
       {
-        title: "Joe's Bachelor Party",
-        location: "New Hampshire"
+        name: "Foy Vance",
+        vibe: "1890s hipster, except you respect him and his voice reminds you of your old days working on the railroad in the colorados",
+        releasedEPs: 5
       }
     ]
     
     for (const singleMusicianData of MusiciansData) {
-      const currentMusician = await Musician.query().findOne({ title: singleMusicianData.title })
+      const currentMusician = await Musician.query().findOne({ name: singleMusicianData.name })
       if (!currentMusician) {
         await Musician.query().insert(singleMusicianData)
       }
