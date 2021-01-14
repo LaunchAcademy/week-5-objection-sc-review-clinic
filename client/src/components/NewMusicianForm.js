@@ -14,7 +14,7 @@ const NewMusicianForm = props => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const addNewMusician = async () => {
-    try {
+    try { 
       const response = await fetch("/api/v1/musicians", {
         method: "POST",
         headers: new Headers({
@@ -22,9 +22,9 @@ const NewMusicianForm = props => {
         }),
         body: JSON.stringify(newMusician)
       })
+      const body = await response.json()
       if (!response.ok) {
         if(response.status === 422) {
-          const body = await response.json()
           const newErrors = translateServerErrors(body.errors)
           return setErrors(newErrors)
         } else {
@@ -33,12 +33,11 @@ const NewMusicianForm = props => {
           throw(error)
         }
       } else {
-        const body = await response.json()
-        console.log("Artist added, alright!", body);
+        console.log("Artist added, alright!")
         setShouldRedirect(true)
       }
-    } catch(err) {
-      console.error(`Error in fetch: ${err.message}`)
+    } catch(error){
+      console.error(error.message)
     }
   }
 
@@ -64,7 +63,7 @@ const NewMusicianForm = props => {
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit} className="callout" >
         <label>
-         First Name:
+         Name:
           <input
             type="text"
             name="name"
@@ -74,7 +73,7 @@ const NewMusicianForm = props => {
         </label>
 
         <label>
-          Last Name:
+          Vibe:
           <input
             type="text"
             name="vibe"
@@ -84,7 +83,7 @@ const NewMusicianForm = props => {
         </label>
 
         <label>
-          Number of Weird EPs: <output for="price" textContent={newMusician.releasedEPs}>{newMusician.releasedEPs}</output>
+          Number of Weird EPs: <output htmlFor="price">{newMusician.releasedEPs}</output>
           <br></br>
 
           <input

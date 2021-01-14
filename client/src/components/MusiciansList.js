@@ -24,9 +24,10 @@ const MusiciansList = props => {
   }, [])
 
   const musicianListItems = musicians.map(musician => {
+    
     return(
       <li key={musician.id}>
-        {musician.title} in {musician.location}
+        {musician.name}: {musician.vibe}
       </li>
     )
   })

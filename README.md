@@ -1,20 +1,3 @@
-## Todo
-* DONE reskin for musicians, commit/branch for SC review reference
-* evaluate instructions for minor differences to make, commit
-* generate finished code for codebase => branch commit 
-* remove code for new base
-
-## Bonus todo
-* study up on cypress tests 
-
-
-## things to note
-* spend some time on the uniqueness 
-* they get confused on DB level validations, just the distinction 
-* add a whole blurb on the uniqueness index
-* MAYBE consider not providing seeder code
-* take some time to read and poke around the cypress stuff
-
 Let's track obscure musicians! Feel free to update the seeder to include your own favorite obscure artists. Is this a shameless way for us to talk about musicians that we feel deserve more notoriety, or that are especially near and dear to our hearts...? 
 
 Yes. Yes it's exactly that. 

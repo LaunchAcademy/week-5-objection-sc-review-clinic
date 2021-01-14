@@ -55,6 +55,7 @@
     "knex": "^0.21.15",
     "morgan": "^1.10.0",
     "objection": "^2.2.3",
+    "objection-unique": "^1.2.1",
     "pg": "^8.5.1"
   }
 }
