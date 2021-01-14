@@ -96,7 +96,6 @@ const NewMusicianForm = props => {
             value={newMusician.releasedEPs}
           />
 
-
         </label>
 
         <div className="button-group">
