@@ -1,5 +1,7 @@
 const Model = require("./Model")
 
-class Musician {}
+class Musician  {
+ 
+}
 
 module.exports = Musician

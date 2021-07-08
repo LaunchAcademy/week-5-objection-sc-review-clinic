@@ -1,3 +1,3 @@
 // include all of your models here using CommonJS requires
-
-module.exports = { };
+const Musician = require("./Musician.js")
+module.exports = { Musician };

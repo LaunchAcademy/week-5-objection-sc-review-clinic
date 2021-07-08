@@ -66,6 +66,7 @@ const NewMusicianForm = props => {
          Name:
           <input
             type="text"
+            id="name"
             name="name"
             onChange={handleInputChange}
             value={newMusician.name}
@@ -76,6 +77,7 @@ const NewMusicianForm = props => {
           Vibe:
           <input
             type="text"
+            id="vibe"
             name="vibe"
             onChange={handleInputChange}
             value={newMusician.vibe}
@@ -88,6 +90,7 @@ const NewMusicianForm = props => {
 
           <input
             type="range"
+            id="eps"
             name="releasedEPs"
             min="0"
             max="15"
@@ -95,7 +98,6 @@ const NewMusicianForm = props => {
             onChange={handleInputChange}
             value={newMusician.releasedEPs}
           />
-
 
         </label>
 
