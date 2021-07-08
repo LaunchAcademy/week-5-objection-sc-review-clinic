@@ -3,19 +3,14 @@
 context("Musician New Page", () => {
   beforeEach(() => {
     cy.task("db:truncate", "Musician")
-    // cy.task("db:insert", {
-    //   modelName: "Musician",
-    //   json: { name: "Dodie", vibe: "Depressed British poet that you are constantly rooting for", releasedEPs: "8" }
-    // }).then(musician => {
-      cy.visit(`/musicians/new`)
-    // })
+    cy.visit(`/musicians/new`)
   })
 
   it("displays the text the correct header", () => {
     cy.get("h2").should("have.text", "So Like Yeah, Let It Out Man, What Beats Do You Have to Drop?")
   })
 
-  it.only("creates a new list item when the form is submitted correctly", () => {
+  it("creates a new list item when the form is submitted correctly", () => {
     cy.get("#name")
       .type("Dodie")
       .should("have.value", "Dodie")
@@ -23,7 +18,7 @@ context("Musician New Page", () => {
     cy.get("#vibe")
       .type("Depressed British poet that you are constantly rooting for")
       .should("have.value", "Depressed British poet that you are constantly rooting for")
-
+      
     // no need to type for EPs
 
     cy.get("form")

@@ -6,7 +6,6 @@ const MusiciansShow = props => {
   
   const getMusician = async () => {
     const id = props.match.params.id
-    console.log("FETCHING")
     try {
       const response = await fetch(`/api/v1/musicians/${id}`)
       if (!response.ok) {

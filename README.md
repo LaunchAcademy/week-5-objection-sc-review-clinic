@@ -32,7 +32,7 @@ Acceptance Criteria:
 Implementation Details:
 
 - This React page should consume data from a backend api in our `musiciansRouter`. 
-- Create a new migration for our rad artists. Each musician should have a **required** string of "name", an **optional** text field for "vibe", and an **optional** integer of "releasedEPs" (an EP is like a mini album). Name should also be unique.
+- Create a new migration for our rad artists. Each musician should have a **required** string of "name", an **optional** text field for "vibe", and an **required** integer of "releasedEPs" (an EP is like a mini album). **Name should also be unique.**, please use the `objection-unique` pattern for this implementation.
 
 #### Create a musician
 
@@ -45,7 +45,7 @@ So that...you love me...they will love me once they know I continuously dig up f
 Acceptance Criteria:
 
 - When navigating to <http://localhost:3000/musicians/new>, there should be a form on the page to add a new musician
-- When I fill in all required information, the form should submit successfully, redirect me back to the show page, and I should see my new musician's info on the list. The `MusicianShow` component should be rendered on this page. Or like...redirect them to the index page. **See what the crowd wants. Their hunger is insatiable.
+- When I fill in all required information, the form should submit successfully, redirect me back to the musician list page (`/musicians`) 
 - If I fail to fill in a required field, I should remain on the page with my form filled out and errors that indicate what I filled out incorrectly
 
 Implementation Details:
@@ -53,3 +53,8 @@ Implementation Details:
 - When the form is submitted and a POST fetch is sent to `/api/v1/musicians` to persist that cool new note master
 - Add validations to your model to fulfill the following requirements: data type validation for each field, and "name" and "number of released eps" should be required.
 - Add the proper API endpoint for a POST request to `/api/v1/musicians`. If the musician is valid, persist it and respond with the a 201 status. If the musician is invalid, respond with the errors and a `422 Unprocessable Entity` status. If any other server error occurs, respond with a `500 Internal Server Error` status.
+
+## Bonus 
+
+* Ensure that the name of each artist on the index page is a link to an artist show page.
+* Navigating to the artist show page should display the name, vibe and released EP count of the artist. the frontend has been built out for you. 

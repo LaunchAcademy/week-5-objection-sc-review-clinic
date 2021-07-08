@@ -15,6 +15,4 @@ context("Musicians Index", () => {
   it("lists all musicians", () => {
     cy.get(".musicians").find("li").first().should("have.text", "Laura Marling: folk chill")
   })
-
-  // test for link
 })
