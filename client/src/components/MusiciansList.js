@@ -13,6 +13,7 @@ const MusiciansList = props => {
         throw(error)
       }
       const musicianData = await response.json()
+      console.log(musicianData);
       setMusicians(musicianData.musicians)
     } catch(err) {
       console.error(`Error in fetch: ${err.message}`)
