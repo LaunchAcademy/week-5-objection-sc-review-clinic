@@ -3,19 +3,17 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { hot } from "react-hot-loader/root";
 
 import "../assets/scss/main.scss";
-import MusiciansList from "./MusiciansList";
-import NewMusicianForm from "./NewMusicianForm";
-import MusicianShow from "./MusicianShow";
+import StuffedAnimalList from "./StuffedAnimalList";
+import NewStuffedAnimalForm from "./NewStuffedAnimalForm";
 
 const App = props => {
   return (
     <div className="grid-container">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={MusiciansList} />
-          <Route exact path="/musicians" component={MusiciansList} />
-          <Route exact path="/musicians/new" component={NewMusicianForm} />
-          <Route exact path="/musicians/:id" component={MusicianShow} />
+          <Route exact path="/" component={StuffedAnimalList} />
+          <Route exact path="/stuffed-animals" component={StuffedAnimalList} />
+          <Route exact path="/stuffed-animals/new" component={NewStuffedAnimalForm} />
         </Switch>
       </BrowserRouter>
     </div>

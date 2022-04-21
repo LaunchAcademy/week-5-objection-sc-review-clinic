@@ -1,9 +1,9 @@
 const getDatabaseUrl = (nodeEnv) => {
   return (
     {
-      development: "postgres://postgres:postgres@localhost:5432/obscure_musicians_development",
-      test: "postgres://postgres:postgres@localhost:5432/obscure_musicians_test",
-      e2e: "postgres://postgres:postgres@localhost:5432/obscure_musicians_e2e",
+      development: "postgres://postgres:postgres@localhost:5432/stuffed-animal-tracker_development",
+      test: "postgres://postgres:postgres@localhost:5432/stuffed-animal-tracker_test",
+      e2e: "postgres://postgres:postgres@localhost:5432/stuffed-animal-tracker_e2e",
     }[nodeEnv] || process.env.DATABASE_URL
   );
 };

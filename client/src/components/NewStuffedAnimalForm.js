@@ -4,23 +4,23 @@ import { Redirect } from "react-router-dom"
 import ErrorList from "./ErrorList"
 import translateServerErrors from "../services/translateServerErrors"
 
-const NewMusicianForm = props => {
-  const [newMusician, setNewMusician] = useState({
+const StuffedAnimalForm = props => {
+  const [newStuffedAnimal, setNewStuffedAnimal] = useState({
     name: "",
-    vibe: "",
-    releasedEPs: "5"
+    owner: ""
   })
+
   const [errors, setErrors] = useState([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
-  const addNewMusician = async () => {
+  const addStuffedAnimal = async () => {
     try { 
-      const response = await fetch("/api/v1/musicians", {
+      const response = await fetch("/api/v1/stuffed-animals", {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json"
         }),
-        body: JSON.stringify(newMusician)
+        body: JSON.stringify(newStuffedAnimal)
       })
       const body = await response.json()
       if (!response.ok) {
@@ -33,7 +33,6 @@ const NewMusicianForm = props => {
           throw(error)
         }
       } else {
-        console.log("Artist added, alright!")
         setShouldRedirect(true)
       }
     } catch(error){
@@ -42,24 +41,24 @@ const NewMusicianForm = props => {
   }
 
   const handleInputChange = event => {
-    setNewMusician({
-      ...newMusician,
+    setNewStuffedAnimal({
+      ...newStuffedAnimal,
       [event.currentTarget.name]: event.currentTarget.value
     })
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    addNewMusician()
+    addStuffedAnimal()
   }
 
   if (shouldRedirect) {
-    return <Redirect to="/musicians" />
+    return <Redirect to="/stuffed-animals" />
   }
 
   return (
     <>
-      <h2>So Like Yeah, Let It Out Man, What Beats Do You Have to Drop?</h2>
+      <h2>Add Your New Frand</h2>
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit} className="callout" >
         <label>
@@ -67,44 +66,29 @@ const NewMusicianForm = props => {
           <input
             type="text"
             name="name"
+            id="name"
             onChange={handleInputChange}
-            value={newMusician.name}
+            value={newStuffedAnimal.name}
           />
         </label>
 
         <label>
-          Vibe:
+          Owner:
           <input
             type="text"
-            name="vibe"
+            id="owner"
+            name="owner"
             onChange={handleInputChange}
-            value={newMusician.vibe}
+            value={newStuffedAnimal.owner}
           />
-        </label>
-
-        <label>
-          Number of Weird EPs: <output htmlFor="price">{newMusician.releasedEPs}</output>
-          <br></br>
-
-          <input
-            type="range"
-            name="releasedEPs"
-            min="0"
-            max="15"
-            step="1"
-            onChange={handleInputChange}
-            value={newMusician.releasedEPs}
-          />
-
-
         </label>
 
         <div className="button-group">
-          <input className="button" type="submit" value="For Sure" />
+          <input className="button" type="submit" value="Yay!" />
         </div>
       </form>
     </>
   )
 }
 
-export default NewMusicianForm
+export default StuffedAnimalForm
