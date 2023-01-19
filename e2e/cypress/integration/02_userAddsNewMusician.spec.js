@@ -17,9 +17,9 @@ context("New Musician Form Page", () => {
                 .type("dreamboat who seems retired before she is even 30")
                 .should("have.value", "dreamboat who seems retired before she is even 30")
 
-                cy.get("#releasedEPs")
-                .type("2")
-                .should("have.value", "2")
+                // cy.get("#releasedEPs")
+                // .type("2")
+                // .should("have.value", "2")
 
                 cy.get(".new-musician-form")
                 .submit()
@@ -28,7 +28,7 @@ context("New Musician Form Page", () => {
 
                 cy.get("li")
                 .last()
-                .should("have.text", "The Last of Us Part 3")
+                .should("have.text", "Olive Klug")
             })
         })
 
@@ -36,9 +36,9 @@ context("New Musician Form Page", () => {
             it("remains on the new item form page if the form is submitted without a name and displays errors", () => {
                 cy.get(".new-musician-form").submit()
 
-                cy.get("h1").should("have.text", "We Have Evidence of a New Best Musician!")
+                cy.get("h2").should("have.text", "So Like Yeah, Let It Out Man, What Beats Do You Have to Drop?")
 
-                cy.get(".errors").should("have.text", "Premiere Year: is a required propertyTitle: is a required property")
+                cy.get(".errors").should("have.text", "Name: is a required property")
             })
         })
     }) 

@@ -10,7 +10,7 @@ const NewMusicianForm = props => {
     vibe: "",
     releasedEPs: "5"
   })
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const addNewMusician = async () => {

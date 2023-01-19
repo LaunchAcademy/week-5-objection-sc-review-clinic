@@ -4,10 +4,10 @@ context("Musicians Index Page", () => {
     beforeEach(() => {
         let musicianId
         cy.task("db:truncate", "Musician" )
-        cy.task("db:insert", { modelName: "Musician", json: { title: "Olive Klug", premiereYear: "2023", network: "HBO", description: "good musician" } })
+        cy.task("db:insert", { modelName: "Musician", json: { name: "Olive Klug", releasedEPs: "2", vibe: "good musician" } })
         
 
-        cy.task("db:find", { modelName: "Musician", conditions: { title: "Olive Klug" } }).then((musicians) => {
+        cy.task("db:find", { modelName: "Musician", conditions: { name: "Olive Klug" } }).then((musicians) => {
             musicianId = musicians[0].id
             // has to be in the callback to get access to a JS variable
             cy.visit(`/musicians/${musicianId}`)
