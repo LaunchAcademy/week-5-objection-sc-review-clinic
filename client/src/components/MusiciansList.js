@@ -27,7 +27,9 @@ const MusiciansList = props => {
     
     return(
       <li key={musician.id}>
-        {musician.name}: {musician.vibe}
+        <Link to={`/musicians/${musician.id}`}>
+          {musician.name}
+        </Link>
       </li>
     )
   })

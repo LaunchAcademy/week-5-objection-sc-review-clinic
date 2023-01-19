@@ -9,7 +9,6 @@ context("Musicians Index Page", () => {
       { name: "Guilhem Desq", vibe: "mad scientist with a hurdy gurdy", releasedEPs: "3" }
     ]})
 
-
     cy.visit(`/musicians`)
   })
 
