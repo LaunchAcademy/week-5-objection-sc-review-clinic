@@ -61,12 +61,13 @@ const NewMusicianForm = props => {
     <>
       <h2>So Like Yeah, Let It Out Man, What Beats Do You Have to Drop?</h2>
       <ErrorList errors={errors} />
-      <form onSubmit={handleSubmit} className="callout" >
+      <form onSubmit={handleSubmit} className="callout new-musician-form">
         <label>
          Name:
           <input
             type="text"
             name="name"
+            id="name"
             onChange={handleInputChange}
             value={newMusician.name}
           />
@@ -77,6 +78,7 @@ const NewMusicianForm = props => {
           <input
             type="text"
             name="vibe"
+            id="vibe"
             onChange={handleInputChange}
             value={newMusician.vibe}
           />
@@ -92,10 +94,10 @@ const NewMusicianForm = props => {
             min="0"
             max="15"
             step="1"
+            id="releasedEPs"
             onChange={handleInputChange}
             value={newMusician.releasedEPs}
           />
-
 
         </label>
 

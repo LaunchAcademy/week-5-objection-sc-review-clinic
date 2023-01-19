@@ -26,7 +26,8 @@ const MusiciansShow = props => {
 
   return(
     <>
-      <h2>Stuff for: {musician.name}</h2>
+      <h1>Info on this musician:</h1>
+      <h2>{musician.name}</h2>
 
       <p className="callout">Vibe: {musician.vibe}</p>
       <p>Number of Released EPs (obviously): {musician.releasedEPs}</p>
