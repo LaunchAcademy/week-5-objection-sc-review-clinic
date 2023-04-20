@@ -10,6 +10,7 @@ const NewMusicianForm = props => {
     vibe: "",
     releasedEPs: "5"
   })
+  
   const [errors, setErrors] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
@@ -22,20 +23,19 @@ const NewMusicianForm = props => {
         }),
         body: JSON.stringify(newMusician)
       })
+
       const body = await response.json()
-      if (!response.ok) {
-        if(response.status === 422) {
-          const newErrors = translateServerErrors(body.errors)
-          return setErrors(newErrors)
-        } else {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw(error)
-        }
-      } else {
-        console.log("Artist added, alright!")
+
+      if (response.ok) {
         setShouldRedirect(true)
+      } else {
+        if (response.status === 422){
+          const newErrors = translateServerErrors(body.errors)
+          setErrors(newErrors)
+        }
       }
+      // happy/sad path handling here
+    
     } catch(error){
       console.error(error.message)
     }
@@ -98,7 +98,6 @@ const NewMusicianForm = props => {
             onChange={handleInputChange}
             value={newMusician.releasedEPs}
           />
-
         </label>
 
         <div className="button-group">

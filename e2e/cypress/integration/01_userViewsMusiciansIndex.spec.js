@@ -9,7 +9,7 @@ context("Musicians Index Page", () => {
       { name: "Guilhem Desq", vibe: "mad scientist with a hurdy gurdy", releasedEPs: "3" }
     ]})
 
-    cy.visit(`/musicians`)
+    cy.visit("/musicians")
   })
 
   context("when viewing the musicians index page", () => {
@@ -19,12 +19,10 @@ context("Musicians Index Page", () => {
         .first()
         .should("have.text", "Sammy Rae and the Friends")
 
-
       cy.get(".musicians")
         .find("li")
         .eq(1)
         .should("have.text", "Guilhem Desq")
-
     })
 
     it("has a link to the new animal form page", () => {

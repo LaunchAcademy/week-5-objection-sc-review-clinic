@@ -13,37 +13,34 @@ musiciansRouter.get("/", async (req, res) => {
         const musicians = await Musician.query()
         return res.json({ musicians })
     } catch (error) {
-        return res.status(500).json({error: error})
+        return res.status(500).json({ error: error })
     }
 })
 
 musiciansRouter.post("/", async (req, res) => {
+    const { body } = req 
+
+    const cleanMusician = cleanUserInput(body)
+
     try {
-        const { body } = req
-
-        const cleanedMusician = cleanUserInput(body)
-
-        const newMusician = await Musician.query().insertAndFetch(cleanedMusician)
-
-        return res.status(201).json({ musician: newMusician })
-    } catch(error){
+        await Musician.query().insert(cleanMusician)
+        res.status(200).json({})
+    } catch (error) {
         if (error instanceof ValidationError){
-            console.log(error.data)
-            return res.status(422).json({errors: error.data })
+            res.status(422).json({ errors: error.data })
+        } else {
+            res.status(500).json({ errors: error })
         }
-
-        return res.status(500).json({ errors: error })
     }
 })
 
 musiciansRouter.get("/:id", async (req, res) => {
-    try {
-        const musician = await Musician.query().findById(req.params.id)
-        return res.status(200).json({ musician })
-    } catch(error){
-        return res.status(500).json({errors: error})
+    try { 
+        const specificMusician = await Musician.query().findById(req.params.id)
+        res.status(200).json({ musician: specificMusician })
+    } catch(error) {
+        res.status(500).json({ errors: error})
     }
-   
 })
 
 export default musiciansRouter
