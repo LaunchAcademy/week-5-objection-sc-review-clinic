@@ -17,9 +17,9 @@ context("New Musician Form Page", () => {
                 .type("dreamboat who seems retired before she is even 30")
                 .should("have.value", "dreamboat who seems retired before she is even 30")
 
-                // cy.get("#releasedEPs")
-                // .type("2")
-                // .should("have.value", "2")
+                cy.get("#releasedEPs")
+                .type("2")
+                .should("have.value", "2")
 
                 cy.get(".new-musician-form")
                 .submit()

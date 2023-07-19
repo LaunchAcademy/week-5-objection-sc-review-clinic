@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const MusiciansShow = props => {
-  const [musician, setMusician] = useState([])
+  const [musician, setMusician] = useState({})
   
-  const getMusician = async () => {
+  const musicianId = props.match.params.id
 
+  const getMusician = async () => {
+    const response = await fetch(`/api/v1/musicians/${musicianId}`)
+
+    const parsedMusicianData = await response.json()
+    setMusician(parsedMusicianData.musician)
   }
 
   useEffect(() => {

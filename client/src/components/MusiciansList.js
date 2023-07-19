@@ -5,18 +5,10 @@ const MusiciansList = props => {
   const [musicians, setMusicians] = useState([])
   
   const getMusicians = async () => {
-    try {
-      const response = await fetch("/api/v1/musicians")
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw(error)
-      }
-      const musicianData = await response.json()
-      setMusicians(musicianData.musicians)
-    } catch(err) {
-      console.error(`Error in fetch: ${err.message}`)
-    }
+    const response = await fetch("/api/v1/musicians")
+    const musiciansData = await response.json()
+    // console.log(musiciansData.musicians)
+    setMusicians(musiciansData.musicians)
   }
 
   useEffect(() => {

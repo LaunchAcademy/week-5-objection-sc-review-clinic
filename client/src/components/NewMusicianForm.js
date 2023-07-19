@@ -10,8 +10,13 @@ const NewMusicianForm = props => {
     vibe: "",
     releasedEPs: "5"
   })
+
   const [errors, setErrors] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
+  // const [shouldRedirect, setShouldRedirect] = useState({
+  //   status: false, 
+  //   musicianId: null
+  // })
 
   const addNewMusician = async () => {
     try { 
@@ -22,8 +27,9 @@ const NewMusicianForm = props => {
         }),
         body: JSON.stringify(newMusician)
       })
+
       const body = await response.json()
-      
+
       if (!response.ok) {
         if(response.status === 422) {
           const newErrors = translateServerErrors(body.errors)
@@ -31,7 +37,9 @@ const NewMusicianForm = props => {
         } 
       } else {
         console.log("Artist added, alright!")
+        console.log(body)
         setShouldRedirect(true)
+        // setShouldRedirect({ status: true, musicianId: body.musician.id })
       }
     } catch(error){
       console.error(error.message)
@@ -53,6 +61,9 @@ const NewMusicianForm = props => {
   if (shouldRedirect) {
     return <Redirect to="/musicians" />
   }
+  // if (shouldRedirect.status) {
+  //   return <Redirect to="/musicians/${shouldRedirect.musicianId}" />
+  // }
 
   return (
     <>
