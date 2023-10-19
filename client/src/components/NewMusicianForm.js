@@ -11,7 +11,11 @@ const NewMusicianForm = props => {
     releasedEPs: "5"
   })
   const [errors, setErrors] = useState({})
-  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [shouldRedirect, setShouldRedirect] = useState(null)
+  // const [shouldRedirect, setShouldRedirect] = useState({
+  //   status: false,
+  //   newMusicianId: null
+  // })
 
   const addNewMusician = async () => {
     try { 
@@ -34,7 +38,13 @@ const NewMusicianForm = props => {
         }
       } else {
         console.log("Artist added, alright!")
-        setShouldRedirect(true)
+        const musician = body.musician
+        console.log(musician);
+        setShouldRedirect(musician.id)
+        // setShouldRedirect({
+        //   status: true, 
+        //   newMusicianId: musician.id
+        // })
       }
     } catch(error){
       console.error(error.message)
@@ -53,8 +63,9 @@ const NewMusicianForm = props => {
     addNewMusician()
   }
 
+  // if (shouldRedirect.status) {
   if (shouldRedirect) {
-    return <Redirect to="/musicians" />
+    return <Redirect to={`/musicians/${shouldRedirect}`} />
   }
 
   return (
