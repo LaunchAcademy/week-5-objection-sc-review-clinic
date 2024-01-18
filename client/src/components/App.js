@@ -1,13 +1,13 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { hot } from "react-hot-loader/root";
+import React from "react"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { hot } from "react-hot-loader/root"
 
-import "../assets/scss/main.scss";
-import MusiciansList from "./MusiciansList";
-import NewMusicianForm from "./NewMusicianForm";
-import MusicianShow from "./MusicianShow";
+import "../assets/scss/main.scss"
+import MusiciansList from "./MusiciansList"
+import NewMusicianForm from "./NewMusicianForm"
+import MusicianShow from "./MusicianShow"
 
-const App = props => {
+const App = (props) => {
   return (
     <div className="grid-container">
       <BrowserRouter>
@@ -19,7 +19,7 @@ const App = props => {
         </Switch>
       </BrowserRouter>
     </div>
-  );
-};
+  )
+}
 
-export default hot(App);
+export default hot(App)

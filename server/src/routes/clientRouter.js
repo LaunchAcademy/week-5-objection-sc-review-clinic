@@ -1,12 +1,12 @@
-import express from "express";
-import getClientIndexPath from "../config/getClientIndexPath.js";
+import express from "express"
+import getClientIndexPath from "../config/getClientIndexPath.js"
 
-const router = new express.Router();
+const router = new express.Router()
 
-const clientRoutes = ["/", "/musicians", "/musicians/:id", "/musicians/new"];
+const clientRoutes = ["/", "/musicians", "/musicians/new", "/musicians/:thing"]
 
 router.get(clientRoutes, (req, res) => {
-  res.sendFile(getClientIndexPath());
-});
+  res.sendFile(getClientIndexPath())
+})
 
-export default router;
+export default router

@@ -4,47 +4,55 @@ import { Redirect } from "react-router-dom"
 import ErrorList from "./ErrorList"
 import translateServerErrors from "../services/translateServerErrors"
 
-const NewMusicianForm = props => {
+const NewMusicianForm = (props) => {
   const [newMusician, setNewMusician] = useState({
     name: "",
     vibe: "",
-    releasedEPs: "5"
+    releasedEPs: "5",
   })
   const [errors, setErrors] = useState({})
-  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [shouldRedirect, setShouldRedirect] = useState({
+    status: false,
+    newMusicianId: null,
+  })
 
   const addNewMusician = async () => {
-    try { 
+    try {
       const response = await fetch("/api/v1/musicians", {
         method: "POST",
         headers: new Headers({
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         }),
-        body: JSON.stringify(newMusician)
+        body: JSON.stringify(newMusician),
       })
       const body = await response.json()
       if (!response.ok) {
-        if(response.status === 422) {
+        if (response.status === 422) {
           const newErrors = translateServerErrors(body.errors)
           return setErrors(newErrors)
         } else {
           const errorMessage = `${response.status} (${response.statusText})`
           const error = new Error(errorMessage)
-          throw(error)
+          throw error
         }
       } else {
         console.log("Artist added, alright!")
-        setShouldRedirect(true)
+        console.log(body)
+        // debugger
+        setShouldRedirect({
+          status: true,
+          newMusicianId: body.musician.id,
+        })
       }
-    } catch(error){
+    } catch (error) {
       console.error(error.message)
     }
   }
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     setNewMusician({
       ...newMusician,
-      [event.currentTarget.name]: event.currentTarget.value
+      [event.currentTarget.name]: event.currentTarget.value,
     })
   }
 
@@ -53,8 +61,8 @@ const NewMusicianForm = props => {
     addNewMusician()
   }
 
-  if (shouldRedirect) {
-    return <Redirect to="/musicians" />
+  if (shouldRedirect.status) {
+    return <Redirect to={`/musicians/${shouldRedirect.newMusicianId}`} />
   }
 
   return (
@@ -63,7 +71,7 @@ const NewMusicianForm = props => {
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit} className="callout new-musician-form">
         <label>
-         Name:
+          Name:
           <input
             type="text"
             name="name"
@@ -87,7 +95,6 @@ const NewMusicianForm = props => {
         <label>
           Number of Weird EPs: <output htmlFor="price">{newMusician.releasedEPs}</output>
           <br></br>
-
           <input
             type="range"
             name="releasedEPs"
@@ -98,7 +105,6 @@ const NewMusicianForm = props => {
             onChange={handleInputChange}
             value={newMusician.releasedEPs}
           />
-
         </label>
 
         <div className="button-group">

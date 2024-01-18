@@ -2,4 +2,4 @@
 
 const Musician = require("./Musician.js")
 
-module.exports = { Musician };
+module.exports = { Musician }
